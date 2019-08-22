@@ -16,7 +16,7 @@ before_install:
   - gcloud config set compute/zone europe-west1-b
   - gcloud container clusters get-credentials multi-cluster-1
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
-  - docker build -t sanp/client-test -f ./client/Dockerfile.dev
+  - docker build -t sanp/client-test -f ./client/Dockerfile.dev ./client/
 
 script:
   - docker run -e CI=true sanp/client-test npm test
